@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import Store from "./pages/Store.tsx"
 import { ThemeProvider } from './contexts/ThemeContext.tsx'
 import GameDetails from './pages/GameDetails.tsx'
+import Cart from './pages/Cart.tsx'
+import AddedGames from './pages/AddedGames.tsx'
+
 
 const router = createBrowserRouter([
   {
@@ -14,8 +17,9 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Store/>},
       { path: "/favorite", element: <div className="text-white">Favorite</div> },
-      { path: "/wishlist", element: <div className="text-white">WIshlist</div> },
-      {path: "/:gameId", element: <GameDetails/>}
+      {path: "/cart", element: <Cart/>},
+      {path: "/games", element: <AddedGames/>},
+      {path: "/games/:gameId", element: <GameDetails/>}
     ]
   }
 ])

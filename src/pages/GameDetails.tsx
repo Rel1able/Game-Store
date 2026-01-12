@@ -38,12 +38,12 @@ export default function GameDetails() {
                 </div>
 
                 <div className="p-4 flex flex-col gap-2  w-[40%]">
-                    <div className="bg-gray-100 dark:bg-gray-800 p-2  rounded-2xl">
+                    <div className=" p-2  rounded-2xl">
                         <h2 className="text-2xl font-bold dark:text-white">Description</h2>
                         <p className="dark:text-white overflow-scroll h-128 hide-scrollbar">{game.description_raw}</p>
                     </div>
                     <div>
-                        <ul className="bg-gray-100 rounded-xl  flex-col flex gap-4 p-2 dark:bg-gray-800 dark:text-white">
+                        <ul className="bg-gray-100 rounded-xl  flex-col flex gap-4 p-2 dark:bg-gray-600 dark:text-white">
                             <li>Website <a href={game.website}>{game.website}</a></li>
                             <li className="flex gap-2">
                                 Genres:
@@ -53,7 +53,7 @@ export default function GameDetails() {
                                     ))}
                                 </ul>
                             </li>
-                            <li className="flex gap-2">
+                            <li className="flex gap-2 text-">
                                 Developers:
                                 <ul className="flex gap-2">
                                     {game.developers?.map((developer) => (
