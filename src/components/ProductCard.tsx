@@ -1,18 +1,21 @@
-export default function ProductCard({name = "Book Name", description = "book description", price = 88, image}){
+import {useState, useEffect} from "react";
+import { getGamePrice } from "../utils/pricing";
+export default function ProductCard({ name, bgImage, rating}) {
+
+    const [price, setPrice] = useState<number>();
+
+    useEffect(() => {
+        const price = getGamePrice(rating);
+        setPrice(price);
+    }, [])
     return (
-        <div className="rounded-2xl bg-white p-4 justify-center items-center m-4">   
-            <div className="bg-blue-300 w-full h-24">
-                <img src={image} alt="book cover"/> 
+        <li className="relative h-64 w-full bg-cover bg-center rounded-lg flex flex-col justify-end items-center" style={{ backgroundImage: `url(${bgImage})` }}>
+            <div className="absolute bottom-0 w-full h-15 backdrop-blur-md bg-black/40" />
+            <div className="text-white p-2 w-full text-center absolute  z-10">
+                <p className="">{name}</p>
+                <p className="text-sm dark:text-white">{price} &euro;</p>
+
             </div>
-            <h1 className="font-bold text-2xl">{name}</h1>
-            <p className="text-gray-600">{description}</p>
-            <div className="flex gap-4 justify-between">
-                <div>
-                    <h4 className="text-xl text-gray-700 font-bold">PRICE</h4>
-                    <div className="font-bold text-2xl">${price}</div>
-                </div>
-                <button className="rounded-2xl px-2 py-4 bg-blue-500 text-white font-bold">Add to cart</button>
-            </div>
-        </div>
+        </li>
     )
 }
