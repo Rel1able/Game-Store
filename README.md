@@ -1,2 +1,0 @@
-Foto von <a href="https://unsplash.com/de/@henry_be?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">enrico bet</a> auf <a href="https://unsplash.com/de/fotos/bibliotheksregal-in-der-nahe-der-schwarzen-holzleiter-lc7xcWebECc?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-      
