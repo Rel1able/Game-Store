@@ -46,7 +46,7 @@ export default function Navbar() {
                         }><span>{item.icon}</span>{item.name}</NavLink></li>
                     ))}
                 </ul>
-                <div className="ml-5 flex gap-3 text-xl"><NavLink to="/games/popular-in-year" className={({isActive}) => `${navItemClass({ isActive })}`}><BsGraphUpArrow size={24} />Popular in 2025</NavLink></div>
+                <div className="ml-5 flex gap-3 text-xl"><NavLink to="/games/popular-in-year" className={({isActive}) => `${navItemClass({ isActive })}`}><BsGraphUpArrow size={24} />Popular in 2026</NavLink></div>
                 <div className="mt-6">
                     <h1 className="ml-4 font-bold text-2xl mb-4">Genres</h1>
                     <ul className="flex flex-col gap-2">
