@@ -18,7 +18,7 @@ export default function ProductCard({ id, name, bgImage, rating }: Game) {
         setPrice(price);
     }, [])
     return (
-        <li className="flex flex-col bg-gray-100 rounded-xl pb-2 dark:bg-gray-800 dark:text-white">
+        <li className="flex flex-col bg-gray-100 rounded-xl pb-2 hover:scale-105 transition-transform dark:bg-gray-800 dark:text-white">
             <Link to={`/games/${id}`}><img className="rounded-xl w-full h-64 object-cover" src={bgImage} /></Link>
 
             <div className="p-2">

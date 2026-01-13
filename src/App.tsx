@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router"
 import Navbar from "./components/Navbar"
 import { CiShoppingCart } from "react-icons/ci"
+
 function App() {
 
 

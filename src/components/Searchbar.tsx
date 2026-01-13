@@ -17,7 +17,7 @@ export default function Searchbar({setSearch}: SearchbarProps){
     return (
         <form className="bg-gray-200 p-2 rounded-2xl dark:bg-gray-800 dark:text-white relative" onSubmit={handleSubmit}>
             <AiOutlineSearch className="absolute right-2 top-3" size={20}/>
-            <input type="text" placeholder="Search games..." onChange={(e) => setValue(e.target.value)}/>
+            <input className="focus:outline-0" type="text" placeholder="Search games..." onChange={(e) => setValue(e.target.value)}/>
         </form>
     )
 }
