@@ -1,6 +1,7 @@
 import ProductCard from "../components/ProductCard";
 import { useEffect, useState } from "react";
 import Searchbar from "../components/Searchbar";
+import { RAWG_BASE_URL, RAWG_API_KEY } from "../config/api";
 
 type Game = {
     name: string
@@ -10,13 +11,14 @@ type Game = {
 } 
 
 type StoreProps = {
-    baseUrl: string;
+    queryString: string;
     title: string
 }
-export default function Store({baseUrl, title}: StoreProps) {
+export default function Store({queryString, title}: StoreProps) {
 
     const [games, setGames] = useState([]);
     const [search, setSearch] = useState("");
+    const baseUrl = `${RAWG_BASE_URL}/games?key=${RAWG_API_KEY}${queryString}`
 
     useEffect(() => {
         async function getGames() {
