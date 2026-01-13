@@ -6,7 +6,7 @@ export default function GenreGames() {
     const {gameGenre} = useParams();
     const queryString = `&genres=${gameGenre}`;
     return (
-        <Store queryString={queryString} title={gameGenre ? formatGenreName(gameGenre) : ""}/>
+        <Store queryString={queryString} title={gameGenre ? formatGenreName(gameGenre) : ""} homepage={false}/>
     )
 
 }

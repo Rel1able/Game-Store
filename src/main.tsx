@@ -11,19 +11,18 @@ import AddedGames from './pages/AddedGames.tsx'
 import GenreGames from './pages/GenreGames.tsx'
 import PopularInYear from './pages/PopularInYear.tsx'
 
-
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <StorePage/>},
+      { path: "/", element: <StorePage /> },
       { path: "/favorite", element: <div className="text-white">Favorite</div> },
-      {path: "/cart", element: <Cart/>},
-      {path: "/library", element: <AddedGames/>},
-      {path: "/games/:gameId", element: <GameDetails/>},
-      {path: "/games/genre/:gameGenre", element: <GenreGames/>},
-      {path: "/games/popular-in-year", element: <PopularInYear/>}
+      { path: "/cart", element: <Cart /> },
+      { path: "/library", element: <AddedGames /> },
+      { path: "/games/:gameId", element: <GameDetails /> },
+      { path: "/games/genre/:gameGenre", element: <GenreGames /> },
+      { path: "/games/popular-in-year", element: <PopularInYear /> }
     ]
   }
 ])

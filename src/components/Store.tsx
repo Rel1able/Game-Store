@@ -13,9 +13,10 @@ type Game = {
 
 type StoreProps = {
     queryString: string;
-    title: string
+    title: string;
+    homepage: boolean;
 }
-export default function Store({ queryString, title }: StoreProps) {
+export default function Store({ queryString, title}: StoreProps) {
 
     const [orderingValue, setOrderingValue] = useState("-added");
     const [games, setGames] = useState([]);
@@ -40,14 +41,10 @@ export default function Store({ queryString, title }: StoreProps) {
 
     return (
         <div className="flex flex-col gap-8 p-8 justify-center items-center">
-
-
             <Searchbar setSearch={setSearch} />
-
-
             <h1 className="text-center font-bold text-2xl dark:text-white">{title}</h1>
-            <div className="relative w-full mb-6">
-                <Dropdown options={options} orderingValue={orderingValue} setOrderingValue={setOrderingValue}/>
+            <div className="relative w-full mb-2 bottom-6">
+                <Dropdown options={options} orderingValue={orderingValue} setOrderingValue={setOrderingValue} />
             </div>
             < ul className="grid w-full grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8">
                 {games.map((game: Game) => (

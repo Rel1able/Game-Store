@@ -2,6 +2,6 @@ import Store from "../components/Store";
 
 export default function StorePage() {
     return (
-        <Store title={"Featured games"} queryString=""/>
+        <Store title={"Featured games"} queryString="" homepage={false}/>
     )
 }
