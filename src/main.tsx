@@ -3,11 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import Store from "./pages/Store.tsx"
+import StorePage from './pages/StorePage.tsx'
 import { ThemeProvider } from './contexts/ThemeContext.tsx'
 import GameDetails from './pages/GameDetails.tsx'
 import Cart from './pages/Cart.tsx'
 import AddedGames from './pages/AddedGames.tsx'
+import GenreGames from './pages/GenreGames.tsx'
+import PopularInYear from './pages/PopularInYear.tsx'
 
 
 const router = createBrowserRouter([
@@ -15,11 +17,13 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <Store/>},
+      { path: "/", element: <StorePage/>},
       { path: "/favorite", element: <div className="text-white">Favorite</div> },
       {path: "/cart", element: <Cart/>},
-      {path: "/games", element: <AddedGames/>},
-      {path: "/games/:gameId", element: <GameDetails/>}
+      {path: "/library", element: <AddedGames/>},
+      {path: "/games/:gameId", element: <GameDetails/>},
+      {path: "/games/genre/:gameGenre", element: <GenreGames/>},
+      {path: "/games/popular-in-year", element: <PopularInYear/>}
     ]
   }
 ])

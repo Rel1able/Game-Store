@@ -1,12 +1,12 @@
 import { Outlet, Link } from "react-router"
-import Dashboard from "./components/Dashboard"
+import Navbar from "./components/Navbar"
 import { CiShoppingCart } from "react-icons/ci"
 function App() {
 
 
   return (
     <div className="flex items-center h-screen">
-      <Dashboard />
+      <Navbar />
       <div className="w-full h-screen">
         <Outlet />
       </div>
