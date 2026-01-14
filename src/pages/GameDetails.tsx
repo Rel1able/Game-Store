@@ -6,7 +6,7 @@ import { formatDate } from "../utils/dateFormatting";
 import { Loadingbar } from "../components/Loadingbar";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import ImageCarousel from "../components/ImageCarousel";
-import { CiStar } from "react-icons/ci";
+import { MdStar } from "react-icons/md";
 
 type Screenshot = {
     id: number;
@@ -115,7 +115,7 @@ export default function GameDetails() {
                                     </ul>
                                 </li>
                                 <li>Release: {game.released ? formatDate(game.released) : "N/A"}</li>
-                                <li className="flex items-center gap-0.5">Rating: {game.rating}<div className="text-blue-400 relative bottom-[0.2]"><CiStar size={24}/></div></li>
+                                <li className="flex items-center gap-0.5">Rating: {game.rating}<div className="text-blue-400 relative bottom-[0.2]"><MdStar size={24}/></div></li>
                             </ul>
                         </div>
                         <div className="mt-2 flex text-2xl justify-between p-2 font-bold bg-gray-100 rounded-xl dark:bg-gray-800 dark:text-white">

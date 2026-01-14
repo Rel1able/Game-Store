@@ -1,9 +1,10 @@
 import { Outlet, Link } from "react-router"
 import Navbar from "./components/Navbar"
 import { CiShoppingCart } from "react-icons/ci"
-
+import { useState } from "react";
+import Cart from "./components/Cart";
 function App() {
-
+  const [visible, setVisible] = useState(false);
 
   return (
     <div className="flex items-center h-screen">
@@ -11,10 +12,12 @@ function App() {
       <div className="w-full h-screen">
         <Outlet />
       </div>
-      <Link to="/cart">
-        <div className="absolute top-8 left-[95%] dark:text-gray-300"><CiShoppingCart size={32} />
-        </div>
-      </Link>
+
+      <div className="absolute top-8 left-[95%] dark:text-gray-300">
+        <button className="cursor-pointer" onClick={() => setVisible(true)}><CiShoppingCart size={32} /></button>
+      </div>
+    {visible && 
+    <Cart/>}
 
     </div>
   )
