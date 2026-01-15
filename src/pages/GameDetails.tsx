@@ -80,7 +80,6 @@ export default function GameDetails() {
         }
     }
 
-
     function nextImage() {
         setCurrentIndex(i => (i + 1) % images.length);
     }
@@ -98,10 +97,8 @@ export default function GameDetails() {
 
                 <h1 className="font-bold text-4xl text-center m-auto dark:text-white p-2">{game.name}</h1>
             </div>
-
             <div className="flex justify-between items-center">
                 <ImageCarousel currentIndex={currentIndex} prevImage={prevImage} nextImage={nextImage} images={images} setIndex={setCurrentIndex} />
-
                 <div className="p-4 flex h-192 flex-col  gap-2 w-[40%]">
                     
                         <div className="p-2 rounded-2xl">
@@ -110,7 +107,6 @@ export default function GameDetails() {
                                 {game.description_raw || "N/A"}
                             </p>
                         </div>
-
                         <div>
                             <ul className="bg-gray-100 rounded-xl flex-col flex gap-4 p-2 dark:bg-gray-600 dark:text-white flex-w">
                                 <li>
@@ -125,17 +121,13 @@ export default function GameDetails() {
                                     </ul>
                                 </li>
                                 <li>Release: {game.released ? formatDate(game.released) : "N/A"}</li>
-                                <li className="flex items-center gap-0.5">Rating: {game.rating}<div className="text-blue-400 relative bottom-[0.2]"><MdStar size={24}/></div></li>
+                                <li className="flex items-center gap-0.5">Rating: {game.rating}<div className="text-blue-400 relative bottom-px"><MdStar size={24}/></div></li>
                             </ul>
                         </div>
                         <div className="mt-2 flex text-2xl justify-between p-2 font-bold bg-gray-100 rounded-xl dark:bg-gray-800 dark:text-white">
                             <div>{price} &euro;</div>
                             <button className="cursor-pointer">Add to cart +</button>
                         </div>
-                    
-
-
-
                 </div>
             </div>
         </div>

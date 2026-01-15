@@ -9,6 +9,7 @@ import GameDetails from './pages/GameDetails.tsx'
 import AddedGames from './pages/AddedGames.tsx'
 import GenreGames from './pages/GenreGames.tsx'
 import PopularInYear from './pages/PopularInYear.tsx'
+import ErrorPage from './pages/ErrorPage.tsx'
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
       { path: "/games/:gameId", element: <GameDetails /> },
       { path: "/games/genre/:gameGenre", element: <GenreGames /> },
       { path: "/games/popular-in-year", element: <PopularInYear /> }
-    ]
+    ],
+    errorElement: <ErrorPage/>
   }
 ])
 

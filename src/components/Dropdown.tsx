@@ -21,7 +21,6 @@ export default function Dropdown({ options, orderingValue, setOrderingValue }: D
             {!open && (
                 <li className="flex items-center justify-between" onClick={() => setOpen(!open)}>Order by: {selected?.name || "Popularity"}<FaCheck size={12} /></li>
             )}
-
             {open && (
                 options.map((option, id) => (
                     <li key={id} className="p-1.5 rounded-xl hover:bg-gray-300 flex items-center justify-between dark:hover:bg-gray-900 " onClick={() => {
