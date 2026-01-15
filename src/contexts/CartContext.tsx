@@ -1,10 +1,12 @@
 import {createContext, useContext, useState} from "react";
 import type { ReactNode } from "react";
-import type { Game } from "../types/game";
+import type { CartGame } from "../types/cart";
+
+
 
 type CartContextType = {
-    cart: Game[];
-    addToCart: (game: Game) => void;
+    cart: CartGame[];
+    addToCart: (game: CartGame) => void;
     removeFromCart: (id: number) => void;
     clearCart: () => void;
 }
@@ -14,10 +16,10 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({children} : {children: ReactNode}){
     const stored = localStorage.getItem("cart");
-    const [cart, setCart] = useState<Game[]>(() => stored ? JSON.parse(stored) : []);
+    const [cart, setCart] = useState<CartGame[]>(() => stored ? JSON.parse(stored) : []);
 
 
-    function addToCart(game: Game){
+    function addToCart(game: CartGame){
         setCart(prev => {
             const updated = [...prev, game];
             localStorage.setItem("cart", JSON.stringify(updated));

@@ -10,9 +10,9 @@ type CartItemProps = {
 
 export default function CartItem({ background_image, name, price, onClick}: CartItemProps) {
     return (
-        <li className="flex justify-center items-center gap-4  bg-gray-200 text-black dark:bg-gray-900 dark:text-white p-4 rounded-xl relative">
+        <li className="flex justify-between items-center gap-4  bg-gray-200 text-black dark:bg-gray-900 dark:text-white p-4 rounded-xl relative">
             <img className="w-[50%] rounded-xl" src={background_image} alt="Game image" />
-            <div className="flex flex-col">
+            <div className="flex flex-col m-auto">
                 <h1>{name}</h1>
                 <h4>{price} &euro;</h4>
             </div>
