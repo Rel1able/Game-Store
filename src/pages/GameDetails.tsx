@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, useLocation } from "react-router";
 import { RAWG_BASE_URL, RAWG_API_KEY } from "../config/api";
 import { getGamePrice } from "../utils/pricing";
 import { formatDate } from "../utils/dateFormatting";
@@ -33,7 +33,9 @@ export default function GameDetails() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const images = game ? [game.background_image, ...gameScreenshots.map((s) => s?.image)] : [];
     const { gameId } = useParams();
+
     const navigate = useNavigate();
+    const location = useLocation();
 
     console.log(gameId);
 
@@ -70,6 +72,14 @@ export default function GameDetails() {
 
     }, [gameId])
 
+    function handleNavigateBack(){
+        if (location.state?.from){
+            navigate(location.state.from);
+        }else{
+            navigate(-1);
+        }
+    }
+
 
     function nextImage() {
         setCurrentIndex(i => (i + 1) % images.length);
@@ -82,7 +92,7 @@ export default function GameDetails() {
     return game ? (
         <div>
             <div className="flex items-center">
-                <button className="cursor-pointer dark:text-white" onClick={() => navigate(-1)}>
+                <button className="cursor-pointer dark:text-white" onClick={() => handleNavigateBack()}>
                     <IoIosArrowRoundBack size={64} />
                 </button>
 

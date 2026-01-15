@@ -4,6 +4,7 @@ import Searchbar from "../components/Searchbar";
 import { RAWG_BASE_URL, RAWG_API_KEY } from "../config/api";
 import Dropdown from "./Dropdown";
 import { Loadingbar } from "./Loadingbar";
+import { useSearchParams } from "react-router";
 
 
 type Game = {
@@ -19,21 +20,28 @@ type StoreProps = {
     homepage: boolean;
 }
 export default function Store({ queryString, title }: StoreProps) {
-    const [orderingValue, setOrderingValue] = useState("-added");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const search = searchParams.get("search") ?? "";
+    const orderingValue = searchParams.get("ordering") ?? "-added";
+    const currentPage = Number(searchParams.get("page") ?? 1);
+    const [loading, setLoading] = useState(true);
+
     const [games, setGames] = useState([]);
-    const [search, setSearch] = useState("");
-    const [currentPage, setCurrentPage] = useState(1);
+
+    function updateParams(params: { search?: string, ordering?: string, page?: number }) {
+        setSearchParams(prev => {
+            if (params.search !== undefined) prev.set("search", params.search);
+            if (params.ordering !== undefined) prev.set("ordering", params.ordering);
+            if (params.page !== undefined) prev.set("page", String(params.page));
+            return prev;
+        })
+
+    }
 
     const pageNumbers = [];
     for (let i = 1; i <= 10; i++) {
         pageNumbers.push(i);
     }
-
-    function paginate(number: number) {
-        setCurrentPage(number);
-    }
-
-
 
     const options = [
         { name: "Popularity", value: "-added" },
@@ -41,31 +49,38 @@ export default function Store({ queryString, title }: StoreProps) {
         { name: "Rating", value: "-rating" }]
 
     useEffect(() => {
-        setCurrentPage(1);
-    }, [orderingValue, search])
-
-    useEffect(() => {
         async function getGames() {
+            setLoading(true);
             setGames([])
             const url = `${RAWG_BASE_URL}/games?key=${RAWG_API_KEY}${queryString}&ordering=${orderingValue}&page=${currentPage}&search=${search}`
             const res = await fetch(url);
             const data = await res.json();
             setGames(data.results);
+            setLoading(false);
             console.log(data.results);
         }
         getGames();
+
     }, [search, queryString, orderingValue, currentPage])
 
+    if (loading) {
+        return <div className="w-full h-full flex justify-center items-center">
+            <Loadingbar />
+        </div>
+    }
+    if (games.length === 0) {
+        return <div className="flex flex-col items-center justify-center h-full p-8">
+            <Searchbar search={search} setSearch={(value) => updateParams({ search: value, page: 1 })} />
+            <div className="font-bold text-4xl dark:text-white m-auto">No games found</div>
+        </div>
+    }
 
-
-
-
-    return games.length > 0 ? (
+    return (
         <div className="flex flex-col gap-8 p-8 justify-center items-center">
-            <Searchbar setSearch={setSearch} />
+            <Searchbar search={search} setSearch={(value) => updateParams({ search: value, page: 1 })} />
             <h1 className="text-center w-full font-bold text-4xl dark:text-white">{title}</h1>
             <div className="relative w-full mb-2 bottom-6">
-                <Dropdown options={options} orderingValue={orderingValue} setOrderingValue={setOrderingValue} />
+                <Dropdown options={options} orderingValue={orderingValue} setOrderingValue={(value) => updateParams({ ordering: value, page: 1 })} />
             </div>
             <ul className="grid w-full grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8">
                 {games.map((game: Game) => (
@@ -76,14 +91,10 @@ export default function Store({ queryString, title }: StoreProps) {
                 {pageNumbers.map((number) => (
 
                     <li>
-                        <button className={`px-3 w-full py-1 rounded-full cursor-pointer font-bold hover:bg-blue-500 dark:text-white  ${currentPage === number ? `bg-blue-500` : `bg-gray-200 dark:bg-gray-800`}`} onClick={() => paginate(number)}>{number}</button>
+                        <button className={`px-3 w-full py-1 rounded-full cursor-pointer font-bold hover:bg-blue-500 dark:text-white  ${currentPage === number ? `bg-blue-500` : `bg-gray-200 dark:bg-gray-800`}`} onClick={() => updateParams({ page: number })}>{number}</button>
                     </li>
-
-
                 ))}
             </ul>
         </div>
-    ) : <div className="w-full h-full flex justify-center items-center">
-        <Loadingbar />
-    </div>
+    )
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getGamePrice } from "../utils/pricing";
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 
 type Game = {
     name: string
@@ -11,6 +11,8 @@ type Game = {
 
 export default function ProductCard({ id, name, bgImage, rating }: Game) {
 
+    const location = useLocation();
+
     const [price, setPrice] = useState<number>();
 
     useEffect(() => {
@@ -19,7 +21,7 @@ export default function ProductCard({ id, name, bgImage, rating }: Game) {
     }, [])
     return (
         <li className="flex flex-col bg-gray-100 rounded-xl pb-2 hover:scale-105 transition-transform dark:bg-gray-800 dark:text-white">
-            <Link to={`/games/${id}`}><img className="rounded-xl w-full h-64 object-cover" src={bgImage} /></Link>
+            <Link to={`/games/${id}`} state={{from: location.pathname + location.search}}><img className="rounded-xl w-full h-64 object-cover" src={bgImage} /></Link>
 
             <div className="p-2">
                 <div className="flex justify-between text-gray-800 px-3 dark:text-gray-300">
