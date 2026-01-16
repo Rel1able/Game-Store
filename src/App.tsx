@@ -42,7 +42,7 @@ function App() {
         {cart.length > 0 && <div className="bg-blue-500 rounded-full w-2 h-2 absolute top-8 left-[96.6%]"></div>}
 
         {visible &&
-          <div ref={cartRef}><Cart /></div>
+          <div ref={cartRef}><Cart setVisible={setVisible}/></div>
         }
       </div>
 

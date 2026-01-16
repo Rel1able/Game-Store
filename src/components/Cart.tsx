@@ -3,11 +3,25 @@ import { useEffect } from "react";
 import { useCart } from "../contexts/CartContext";
 import type { Game } from "../types/game";
 import CartItem from "./CartItem";
+import { useNavigate } from "react-router";
 
-export default function Cart() {
+
+type CartProps = {
+    setVisible: (value: boolean) => void
+}
+
+export default function Cart({setVisible}: CartProps) {
     const { cart, clearCart, removeFromCart } = useCart();
     const games = JSON.parse(localStorage.getItem("cart") || "[]");
+    const navigate = useNavigate();
 
+    function handleCheckout(){
+        alert("Games were purchased");
+        localStorage.setItem("library", JSON.stringify(cart));
+        localStorage.removeItem("cart");
+        setVisible(false);
+        navigate("/library");
+    }
 
     const gamesWithPrices = games.map((game: Game) => ({
         ...game,
@@ -35,7 +49,7 @@ export default function Cart() {
             <div className="relative bottom-0">
                 <div className="sticky bottom-0 bg-gray-200 dark:bg-gray-900 w-84 p-4 mr-2 rounded-2xl">
                     <div className="black dark:text-gray-300 text-2xl">Total: {totalPrice.toFixed(2)}&euro;</div>
-                    <button className="px-2 py-1 bg-gray-700 text-white rounded-xl m-2 hover:bg-gray-800 transition-all cursor-pointer text-2xl">Checkout</button>
+                    <button onClick={handleCheckout} className="px-2 py-1 bg-gray-700 text-white rounded-xl m-2 hover:bg-gray-800 transition-all cursor-pointer text-2xl">Checkout</button>
                 </div>
 
             </div>
