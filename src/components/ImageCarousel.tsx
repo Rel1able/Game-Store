@@ -13,7 +13,7 @@ type ImageCarouselProps = {
 
 export default function ImageCarousel({ images, currentIndex, prevImage, nextImage, setIndex }: ImageCarouselProps) {
     return (
-        <div className="relative rounded-3xl w-full h-192 overflow-hidden">
+        <div className="relative rounded-3xl w-full h-128 lg:h-192 overflow-hidden">
             <img src={images[currentIndex]} className="w-full object-cover h-full" alt="game screenshot"/>
             <div className="absolute top-[50%] z-10 flex justify-between w-full items-center">
                 <button className=" text-white rounded-xl cursor-pointer bg-gray-500 hover:bg-gray-600 hover:dark:bg-gray-900 dark:bg-gray-800 ml-2" onClick={prevImage}><MdKeyboardArrowLeft size={48} /></button>

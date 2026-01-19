@@ -51,7 +51,7 @@ function App() {
           )}
         </button>
       </div>
-      <div className="fixed bottom-16 right-8 dark:text-white bg-gray-200  dark:bg-gray-700 rounded-full p-2 flex items-center lg:hidden z-10" onClick={() => setOpened(!opened)}>
+      <div className="fixed bottom-16 right-8  bg-gray-800 text-white  dark:bg-gray-700 rounded-full p-2 flex items-center lg:hidden z-10" onClick={() => setOpened(!opened)}>
         <button className="relative cursor-pointer ">
           <BsList size={32} />
         </button>

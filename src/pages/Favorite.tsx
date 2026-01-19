@@ -38,7 +38,7 @@ export default function Favorite() {
     }
     return (
         <div className="flex flex-col gap-8 p-16 justify-center items-center">
-            <h1 className="font-bold text-4xl dark:text-white">Favorite</h1>
+            <h1 className="font-bold text-4xl dark:text-white">Favorite Games</h1>
             <ul className="grid w-full grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8">
                 {library.map(game => (
                     <AddedGameCard
