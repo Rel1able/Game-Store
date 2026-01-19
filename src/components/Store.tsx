@@ -71,7 +71,7 @@ export default function Store({ queryString, title }: StoreProps) {
     }
 
     if (loading) {
-        return <div className="w-full h-full flex justify-center items-center">
+        return <div className="w-full h-screen flex justify-center items-center">
             <Loadingbar />
         </div>
     }
@@ -89,7 +89,7 @@ export default function Store({ queryString, title }: StoreProps) {
             <div className="relative w-full mb-2 bottom-6">
                 <Dropdown options={options} orderingValue={orderingValue} setOrderingValue={(value) => updateParams({ ordering: value, page: 1 })} />
             </div>
-            <ul className="grid w-full grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8">
+            <ul className="grid w-full grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-8">
                 {games.map((game: Game) => (
                     <ProductCard name={game.name} bgImage={game.background_image} rating={game.rating} id={game.id} />
                 ))}

@@ -37,7 +37,7 @@ export default function AddedGames() {
   return (
     <div className="flex flex-col gap-8 p-16 justify-center items-center">
       <h1 className="font-bold text-4xl dark:text-white">Added Games</h1>
-      <ul className="grid w-full grid-cols-[repeat(auto-fit,minmax(350px,1fr))] gap-8">
+      <ul className="grid w-full grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(350px,1fr))]  gap-8">
         {library.map(game => (
           <AddedGameCard
             key={game.id}

@@ -12,7 +12,7 @@ import PopularInYear from './pages/PopularInYear.tsx'
 import ErrorPage from './pages/ErrorPage.tsx'
 import Favorite from './pages/Favorite.tsx'
 import { CartProvider } from './contexts/CartContext.tsx'
-import { FaV } from 'react-icons/fa6'
+
 
 const router = createBrowserRouter([
   {
