@@ -1,4 +1,3 @@
-import type { Game } from "../types/game"
 import { IoIosCloseCircle } from "react-icons/io";
 
 type CartItemProps = {

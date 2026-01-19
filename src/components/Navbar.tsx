@@ -20,7 +20,7 @@ export default function Navbar() {
     const listItems = [
         { name: "Store", link: "/", icon: <CiShop size={iconSize} /> },
         { name: "Favorite", link: "/favorite", icon: <CiStar size={iconSize} /> },
-        { name: "Your Games", link: "/library", icon: <AiOutlineMenu size={iconSize} /> }
+        { name: "Added Games", link: "/library", icon: <AiOutlineMenu size={iconSize} /> }
     ]
 
     const genresList = [
