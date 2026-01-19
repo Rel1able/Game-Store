@@ -43,7 +43,7 @@ function App() {
         <Outlet />
       </div>
 
-      <div className="absolute top-8 right-8 dark:text-gray-300 flex items-center">
+      <div className="absolute top-8 right-8 bg-gray-800 text-white  dark:bg-gray-700 rounded-full p-2 flex items-center">
         <button className="relative cursor-pointer" onClick={() => setVisible(true)}>
           <CiShoppingCart size={32} />
           {cart.length > 0 && (

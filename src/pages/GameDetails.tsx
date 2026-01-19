@@ -90,9 +90,9 @@ export default function GameDetails() {
 
                 <h1 className="font-bold text-4xl text-center m-auto dark:text-white p-2">{game.name}</h1>
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center flex-col md:flex-row">
                 <ImageCarousel currentIndex={currentIndex} prevImage={prevImage} nextImage={nextImage} images={images} setIndex={setCurrentIndex} />
-                <div className="p-4 flex h-192 flex-col  gap-2 w-[40%]">
+                <div className="p-4 flex h-192 flex-col  gap-2 w-[90%] md:w-[40%]">
 
                     <div className="p-2 rounded-2xl">
                         <h2 className="text-2xl font-bold dark:text-white">Description</h2>
