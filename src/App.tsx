@@ -34,7 +34,7 @@ function App() {
   return (
 
     <div className="flex items-start min-h-screen" >
-      <span className="hidden lg:block"><Navbar onClick={""}/></span>
+      <span className="hidden lg:block"><Navbar onClick={() => null}/></span>
 
 
 
@@ -58,7 +58,7 @@ function App() {
       </div>
 
       {opened &&
-        <div className="h-full fixed top-0 flex justify-center items-center bg-gray-900 w-full">
+        <div className="h-full fixed top-0 flex justify-center items-center text-black bg-gray-200 dark:bg-gray-900 w-full">
           <Navbar onClick={() => setOpened(false)}/>
         </div>}
       {visible &&

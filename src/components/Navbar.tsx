@@ -9,7 +9,7 @@ import { SiLichess } from "react-icons/si";
 import { RiSwordLine } from "react-icons/ri";
 import { SlPuzzle } from "react-icons/sl";
 
-export default function Navbar({onClick}) {
+export default function Navbar({onClick}: {onClick: () => void}) {
 
     const iconSize = 32;
 
