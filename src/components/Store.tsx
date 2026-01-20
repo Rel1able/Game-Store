@@ -58,8 +58,6 @@ export default function Store({ queryString, title }: StoreProps) {
             const pages = Math.ceil(data.count / perPage);
             setTotalPages(Math.min(pages, 10));
             setLoading(false);
-            console.log(data);
-            console.log(data.results);
         }
         getGames();
 

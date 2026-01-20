@@ -42,10 +42,9 @@ export default function Cart({ setVisible }: CartProps) {
     }))
     let prices = gamesWithPrices.map((game: Game) => game.price);
     const totalPrice = prices.reduce((acc: number, curr: number) => acc + curr, 0)
-    console.log("Games", gamesWithPrices)
+
 
     useEffect(() => {
-        console.log("rerendering")
     }, [cart])
 
     return (

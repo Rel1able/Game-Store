@@ -14,7 +14,7 @@ export default function AddedGameCard({ id, name, background_image, rating,favor
     useEffect(() => {
         const price = getGamePrice(rating);
         setPrice(price);
-    }, [])
+    }, [rating])
 
     return (
         <li key={id} className="flex flex-col bg-gray-100 rounded-xl pb-2 hover:scale-105 transition-transform dark:bg-gray-800 dark:text-white">

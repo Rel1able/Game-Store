@@ -19,7 +19,7 @@ export default function ProductCard({ id, name, bgImage, rating }: Game) {
     useEffect(() => {
         const price = getGamePrice(rating);
         setPrice(price);
-    }, [])
+    }, [rating])
 
     const isInCart = cart.some((item) => item.id === id);
 

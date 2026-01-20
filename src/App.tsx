@@ -7,62 +7,57 @@ import { useCart } from "./contexts/CartContext";
 import { BsList } from "react-icons/bs";
 
 function App() {
-  const [visible, setVisible] = useState(false);
-  const [opened, setOpened] = useState(false);
+  const [isCartVisible, setCartVisible] = useState(false);
+  const [isNavbarOpened, setNavbarOpened] = useState(false);
+
   const cartRef = useRef<HTMLDivElement>(null);
   const { cart } = useCart();
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (cartRef.current && !cartRef.current.contains(e.target as Node)) {
-        setVisible(false);
+        setCartVisible(false);
       }
     }
-    if (visible) {
+    if (isCartVisible) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [visible])
+  }, [isCartVisible])
 
   useEffect(() => {
-    console.log("rend");
   }, [cart])
 
 
   return (
 
-    <div className="flex items-start min-h-screen" >
-      <span className="hidden lg:block"><Navbar onClick={() => null}/></span>
-
-
-
-
-      <div className={`w-full h-full transition-all ${visible ? "blur-sm pointer-events-none" : ""}`}>
+    <div className="flex items-start min-h-screen w-full" >
+      <span className="hidden lg:block"><Navbar onClick={() => null} /></span>
+      <div className={`w-full h-full transition-all ${isCartVisible ? "blur-sm pointer-events-none" : ""}`}>
         <Outlet />
       </div>
 
       <div className="absolute top-8 right-8 bg-gray-800 text-white  dark:bg-gray-700 rounded-full p-2 flex items-center">
-        <button className="relative cursor-pointer" onClick={() => setVisible(true)}>
+        <button className="relative cursor-pointer" onClick={() => setCartVisible(true)}>
           <CiShoppingCart size={32} />
           {cart.length > 0 && (
             <span className="absolute -top-1 -right-1 bg-blue-500 w-2 h-2 rounded-full"></span>
           )}
         </button>
       </div>
-      <div className="fixed bottom-16 right-8  bg-gray-800 text-white  dark:bg-gray-700 rounded-full p-2 flex items-center lg:hidden z-10" onClick={() => setOpened(!opened)}>
+      <div className="fixed bottom-16 right-8  bg-gray-800 text-white  dark:bg-gray-700 rounded-full p-2 flex items-center lg:hidden z-10" onClick={() => setNavbarOpened(!isNavbarOpened)}>
         <button className="relative cursor-pointer ">
           <BsList size={32} />
         </button>
       </div>
-
-      {opened &&
+      {isNavbarOpened &&
         <div className="h-full fixed top-0 flex justify-center items-center text-black bg-gray-200 dark:bg-gray-900 w-full">
-          <Navbar onClick={() => setOpened(false)}/>
+          <Navbar onClick={() => setNavbarOpened(false)} />
         </div>}
-      {visible &&
-        <div ref={cartRef}><Cart setVisible={setVisible} /></div>
+      {isCartVisible &&
+        <div ref={cartRef}><Cart setVisible={setCartVisible} /></div>
       }
     </div>
 

@@ -28,8 +28,8 @@ export default function Navbar({onClick}: {onClick: () => void}) {
         { name: "Strategy", link: "/games/genre/strategy", icon: <SiLichess size={iconSize}/> },
         { name: "RPG", link: "/games/genre/role-playing-games-rpg", icon: <RiSwordLine size={iconSize}/> },
         { name: "Shooter", link: "/games/genre/shooter", icon: <GiPistolGun size={iconSize}/> },
-        { name: "Adventure", link: "games/genre/adventure", icon: <CiMountain1 size={iconSize}/> },
-        { name: "Puzzle", link: "games/genre/puzzle", icon: <SlPuzzle size={iconSize}/> },
+        { name: "Adventure", link: "/games/genre/adventure", icon: <CiMountain1 size={iconSize}/> },
+        { name: "Puzzle", link: "/games/genre/puzzle", icon: <SlPuzzle size={iconSize}/> },
         { name: "Racing", link: "/games/genre/racing", icon: <PiFlagCheckeredFill size={iconSize}/> },
         { name: "Sports", link: "/games/genre/sports", icon: <CiFootball size={iconSize}/> },
     ];

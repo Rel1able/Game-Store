@@ -17,7 +17,7 @@ type Screenshot = {
 
 
 export default function GameDetails() {
-    const [game, setGame] = useState<Game | null>();
+    const [game, setGame] = useState<Game | null>(null);
     const [price, setPrice] = useState(0);
     const [gameScreenshots, setGameScreenshots] = useState<Screenshot[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,7 +29,6 @@ export default function GameDetails() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    console.log(gameId);
     const isInCart = cart.some((item) => item.id === game?.id);
 
     useEffect(() => {
@@ -39,7 +38,6 @@ export default function GameDetails() {
                 const req = await fetch(`${RAWG_BASE_URL}/games/${gameId}?key=${RAWG_API_KEY}`);
                 const res = await req.json();
                 setGame(res);
-                console.log(res);
 
                 const calculatedPrice = getGamePrice(res.rating);
                 setPrice(calculatedPrice);
@@ -54,7 +52,6 @@ export default function GameDetails() {
                 const req = await fetch(`${RAWG_BASE_URL}/games/${gameId}/screenshots?key=${RAWG_API_KEY}`);
                 const res = await req.json();
                 setGameScreenshots(res.results);
-                console.log(res);
 
             } catch (err) {
                 console.error(err);
@@ -125,7 +122,7 @@ export default function GameDetails() {
                                 name: game.name,
                                 background_image: game.background_image,
                                 rating: game.rating,
-                                price: getGamePrice(game.rating),
+                                price: price,
                             })
                         }
                         > {isInCart ? (
@@ -140,7 +137,7 @@ export default function GameDetails() {
             </div>
         </div>
     ) : (
-        <div className="w-full h-full flex justify-center items-center">
+        <div className="w-full h-screen flex justify-center items-center">
             <Loadingbar />
         </div>
 
