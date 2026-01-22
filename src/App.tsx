@@ -5,10 +5,12 @@ import { useState, useEffect, useRef } from "react";
 import Cart from "./components/Cart";
 import { useCart } from "./contexts/CartContext";
 import { BsList } from "react-icons/bs";
+import CheckoutModal from "./components/CheckoutModal";
 
 function App() {
   const [isCartVisible, setCartVisible] = useState(false);
   const [isNavbarOpened, setNavbarOpened] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const cartRef = useRef<HTMLDivElement>(null);
   const { cart } = useCart();
@@ -35,7 +37,7 @@ function App() {
 
     <div className="flex items-start min-h-screen w-full" >
       <span className="hidden lg:block"><Navbar onClick={() => null} /></span>
-      <div className={`w-full h-full transition-all ${isCartVisible ? "blur-sm pointer-events-none" : ""}`}>
+      <div className={`w-full h-full transition-all ${isCartVisible || showModal ? "blur-sm pointer-events-none" : ""}`}>
         <Outlet />
       </div>
 
@@ -57,8 +59,13 @@ function App() {
           <Navbar onClick={() => setNavbarOpened(false)} />
         </div>}
       {isCartVisible &&
-        <div ref={cartRef}><Cart setVisible={setCartVisible} /></div>
+        <div ref={cartRef}><Cart setVisible={setCartVisible} setShowModal={setShowModal}/></div>
       }
+      {showModal && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <CheckoutModal setShowModal={setShowModal}/>
+        </div>
+      )}
     </div>
 
 
